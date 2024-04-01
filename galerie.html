@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<style>
+
+
+.image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-item {
+            width: 200px;
+            height: 200px; /* Adjust as needed */
+            margin: 10px; /* Adjust spacing between images */
+            
+        }
+
+        .image-item img {
+            cursor: pointer;
+            width: 100%; /* Ensure the image fills its container */
+            height: 100%; /* Maintain aspect ratio */
+        }
+
+        .image-item img:hover {
+    transform: scale(1.1); /* Change l'échelle de l'image lors du survol */
+}
+        
+	
+
+    body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: linear-gradient(to bottom, #CCCCCC, #edf0f1); /* Dégradé de gris */
+}
+
+#ensemble_btn{
+      
+text-align: center;
+}
+
+#canvas {
+    display: flex;
+    flex-direction: column; /* Les éléments à l'intérieur seront empilés les uns au-dessus des autres */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    height: 100%; /* Utilise toute la hauteur de l'écran */
+    
+    
+    
+}
+
+#imgId {
+    width: 700px; /* Taille maximale de l'image */
+    height: 500px; /* Taille maximale de l'image */
+    text-align: center; /* Centrer le contenu horizontalement */
+}
+
+
+/* Wrapper styles */
+#wrapper {
+  display: flex;
+  height: 100%;
+}
+
+/* Main content area */
+#up {
+  flex: 1 1 0;
+  padding: 20px; /* Add some padding */
+}
+
+#bar {
+  flex: 0 0 350px; /* Set a fixed width for the sidebar */
+  background-color: #eff0f1; /* Light gray background */
+  padding: 20px; /* Add some padding */
+  border-left: 4px solid #000000; /* Ajoute une bordure droite */
+  box-shadow: 200px 200px 200px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour la profondeur */
+}
+
+/* Media container */
+#media {
+  overflow: auto;
+  scroll-behavior: smooth;
+  max-height: 100%;
+  margin-top: 20px; /* Add some space from the top */
+}
+
+/* Fieldset styles */
+fieldset {
+  background-color: #fff; /* White background */
+  border: 2px solid #000000; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Add some padding */
+  margin-bottom: 20px; /* Add some space at the bottom */
+}
+
+/* Legend styles */
+legend {
+  color: #555; /* Dark gray text color */
+  font-style: italic;
+  text-align: center;
+}
+
+#addbtn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff; /* Couleur du texte en blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#addbtn i {
+  margin-right: 5px;
+}
+#delete i {
+  margin-right: 5px;
+}
+
+
+#addbtn span {
+  text-transform: uppercase; /* Convertit le texte en majuscules */
+}
+
+#col{
+  color: white;
+  text-transform: uppercase;  
+  font-size: 16px;
+  font-weight: bold;
+}
+#delete {
+  padding: 10px 20px;
+  background-color: rgb(255,0,0);
+  color: #fff; /* Couleur du texte en blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+/* Form label styles */
+label {
+  color: #555; /* Dark gray text color */
+  font-style: italic;
+}
+
+/* Hyperlink styles */
+a {
+  color: #007bff; /* Blue link color */
+  font-style: italic;
+}
+
+/* Paragraph styles */
+p {
+  color: #333; /* Dark text color */
+  font-size: 15px;
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Button styles */
+button, #imagesub {
+  background-color: #f0f0f0; /* Very light shade */
+  color: #333; /* Dark text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 20px; /* Add padding */
+}
+
+/* Button hover/focus styles */
+button:hover, button:focus, #imagesub:hover, #imagesub:focus {
+  background-color: #e0e0e0; /* Lighter shade on hover/focus */
+}
+
+/* Hover/focus styles for links */
+a:hover, a:focus {
+  color: #0056b3; /* Darker blue on hover/focus */
+  cursor: pointer;
+}
+
+/* Styles for headings */
+b {
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* Italics styles */
+i {
+  color: #6c757d; /* Gray color for italics */
+}
+
+/* Input field styles */
+input {
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Add padding */
+}
+
+/* Modal styles */
+.modal, .modals {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Style pour le fond semi-transparent de la modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 999; /* Assure que la modal est au-dessus de tout le reste */
+  display: none; /* Cachée par défaut */
+}
+
+/* Style pour le contenu de la modal */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9; /* Couleur de fond */
+  padding: 20px;
+  border-radius: 10px; /* Coins arrondis */
+  width: 50%; /* Largeur de la modal */
+  max-width: 500px; /* Largeur maximale */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Ombre */
+}
+
+/* Style pour le bouton de fermeture */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #666; /* Couleur du texte */
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333; /* Couleur du texte au survol */
+}
+
+/* Style pour le titre de la modal */
+legend {
+  font-size: 24px; /* Taille de la police */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Couleur du texte */
+}
+
+/* Style pour les labels */
+label {
+  font-weight: bold;
+  color: #666; /* Couleur du texte */
+}
+
+/* Style pour les inputs */
+input[type="file"],
+input[type="submit"],
+input[type="reset"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Taille de la police */
+}
+
+input[type="submit"],
+input[type="reset"] {
+  background-color: #007bff; /* Couleur de fond pour les boutons */
+  color: #fff; /* Couleur du texte */
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+/* Style pour le bouton de parcourir */
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #007bff; /* Bordure */
+  border-radius: 4px; /* Coins arrondis */
+  background-color: #fff; /* Couleur de fond */
+  color: #007bff; /* Couleur du texte */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition fluide */
+}
+
+/* Changement de style au survol */
+input[type="file"]:hover {
+  background-color: #007bff; /* Couleur de fond au survol */
+  color: #fff; /* Couleur du texte au survol */
+}
+
+/* Changement de style lorsque le bouton est actif ou sélectionné */
+input[type="file"]:focus,
+input[type="file"]:active {
+  outline: none; /* Supprimer le contour par défaut */
+  border-color: #0056b3; /* Couleur de la bordure lorsqu'il est actif */
+}
+
+
+.close, .closes {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus, .closes:hover, .closes:focus {
+  color: #333; /* Dark text color on hover/focus */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+h1 {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em; 
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.play th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.play td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.play {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 100%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.play td, .play th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.play tr:nth-child(odd) {
+  background: linear-gradient(to bottom, #CCCCCC, #3E8DA8);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Background-color of the even rows */
+.play tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.play th {
+	  background-color: #FFF842;
+    text-align: center;
+}
+
+.play td:first-child { color: #FB667A; }
+
+.play tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.play td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.play td:nth-child(4),
+.play th:nth-child(4) { display: none; }
+}
+
+#outils{
+  text-align: center;
+}
+#add{
+  text-align: center;
+
+  
+}
+
+
+nav {
+  background-color: #3E8DA8;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #555;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #45a049;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .search-bar {
+    margin-left: auto;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+#vari {
+    margin: 20px auto;
+    width: 80%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#wrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img_pl {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.formfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+label {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit {
+    margin-top: 10px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+
+<body>
+
+    <nav>
+        <div class="logo">PlayVibe</div>
+        <ul class="nav-links">
+          <li><a href="http://localhost:3000/main.html">Accueil</a></li>
+          <li><a href="http://localhost:3000/galerie">Images</a></li>
+          <li><a href="http://localhost:3000/">Videos</a></li>
+          
+        </ul>
+        <div class="search-bar">
+          <input type="text" placeholder="Recherche...">
+          <button type="submit">Rechercher</button>
+        </div>
+      </nav>
+    <div id="wrapper">
+
+
+        
+        <div id="up">
+            <div id="player">
+                
+                <fieldset id="fieldp">
+                    <div class="slider">
+            
+                        <div class="slides">
+                        
+                            <figure id="canvas">
+                              <img src= "" id="imgId">
+                              <div class="ensemble_btn">
+                                <!-- Bouton pour passer a l image suivante-->
+                                <button value="Next" id="next" class="button">
+                                    <span class="button_icon">
+                                        <ion-icon name="arrow-back-outline"></ion-icon>
+                                    </span>
+                                    <span class="button_text">Next</span>
+                                </button>
+                                <!-- Bouton pour passer a l image d avant-->
+                                <button value="Back" id="back" class="button">
+                                    <span class="button_icon">
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                    </span>
+                                    <span class="button_text">Previous</span>
+                                </button>
+                                <!-- Bouton pour enregistrer  l image apres modification-->
+                                <button value="Save Image" id="save" class="button">
+                                    <span class="button_icon">
+                                        <ion-icon name="download-outline"></ion-icon>
+                                    </span>
+                                    <span class="button_text">Save</span>
+                                </button>
+                                <!-- Bouton pour supprimer l image en cours-->
+                                <button value="Delete Image" id="delete" class="button">
+                                    <span class="button_icon">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </span>
+                                    <span class="button_text">Delete</span>
+                                </button>
+            
+                                
+            
+            
+                                
+                            </div>
+                            <div class="image-gallery" id="imageGallery">
+                                <!-- Images will be dynamically added here -->
+                            </div>
+                              
+                             
+            
+                            </figure>
+                            
+            
+                           
+                          
+            
+            
+                            <canvas id="canvass" width="100" height="100">
+                                <img src="" id="imagesource">
+                            </canvas>
+            
+                                           
+                         
+            
+                        </div>
+                       
+                        <div class="navigation-manuel">
+                            
+                        
+                        </div>
+            
+                    </div>
+
+                   
+                   
+    
+                    
+                    
+                </fieldset>
+            </div>
+            
+        </div>
+
+        <div id="bar">
+
+            <div id="vari">
+                <fieldset>
+                    <div id="wrapper2">
+                        <span class="img_pl">Image Player</span>
+                
+                        <div class="formfile">
+                            <form action="/img" enctype="multipart/form-data" method=post>
+                                <input type="file" id="uploader"  name="uploader" accept="Image">
+                                <label for="uploader">Choose Image</label> 
+                                <input type="submit" id="submit" value="Add">
+                            </form>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </fieldset>
+            </div>
+            <div class="cursor-pointer"   id="media">
+                <table class="play">
+                    
+                    <thead>
+                        <tr>
+                            <th>Nom des images</th>
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="videoBody">
+                       
+                    </tbody>
+                </table>
+            </table>
+            </div>
+            
+        </div>
+     
+        
+    </div>
+   
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="Scripts/img.js"></script>
+    <script> 
+
+        const socket = io();
+        var nb = 0;
+        var length;
+        var list_img;
+
+        socket.on('hello', function(data) {});
+
+        socket.on('firstimage', (arg) => {
+            document.getElementById("imgId").src = arg;
+        });
+
+        socket.on('src', (arg) => {
+            document.getElementById("imgId").src = arg;
+        });
+
+        socket.on('list', (arg) => {
+            list_img = arg;
+            const gallery = document.getElementById('imageGallery');
+
+            list_img.forEach(imageUrl => {
+                const img = new Image();
+                img.onload = function() {
+                    const imageItem = document.createElement('div');
+                    imageItem.classList.add('image-item');
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = "/galerie/" + imageUrl;
+                    var playlist = document.querySelector(".play");
+                    var imageUrlWithoutPrefix = imageUrl.substring("images/".length);
+
+                    playlist.innerHTML += "<td><p id='" + imageUrlWithoutPrefix + "'>" + imageUrlWithoutPrefix + "</p></td>";
+
+                    imgElement.addEventListener('click', function() {
+                        const imageName = imageUrl.split('/').pop();
+                        document.getElementById("imgId").src = imageName;
+                    });
+
+                    imageItem.appendChild(imgElement);
+                    gallery.appendChild(imageItem);
+                };
+                img.onerror = function() {
+                    console.error('Image not found:', imageUrl);
+                };
+                img.src = "/galerie/" + imageUrl;
+            });
+        });
+
+        socket.on('length', (arg) => {
+            length = arg;
+        });
+
+        socket.on('deleted', (arg) => {
+            alert('image deleted');
+            location.reload();
+        });
+
+        document.getElementById("next").addEventListener('click', function(e) {
+            nb = nb + 1;
+            if (nb > (length - 1)) { nb = 0; }
+            socket.emit('nb', nb);
+        });
+
+        document.getElementById("back").addEventListener('click', function(e) {
+            nb = nb - 1;
+            if (nb < 0) { nb = (length - 1); }
+            socket.emit('nb', nb);
+        });
+
+        document.getElementById("save").addEventListener('click', function(e) {
+            var url_src = document.getElementById("imgId").src;
+            socket.emit('save', url_src);
+        });
+
+        document.getElementById("delete").addEventListener('click', function(e) {
+            var url_src = document.getElementById("imgId").src;
+            socket.emit('delete', url_src);
+        });
+
+        const canvas = document.getElementById('canvass');
+        const ctx = canvas.getContext("2d");
+        const reader = new FileReader();
+        const img = new Image();
+        const uploadImage = (e) => {
+            reader.onload = () => {
+                img.onload = () => {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                };
+                document.getElementById("imgId").src = reader.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        };
+        const imageLoader = document.getElementById('uploader');
+        imageLoader.addEventListener("change", uploadImage);
+
+        function download() {
+            var url_src = document.getElementById("imgId").src;
+            socket.emit('save', url_src);
+        }
+        document.querySelector('button').addEventListener('click', download);
+
+        function Animation() {
+            for (img in list_img) {
+                new_src = "images/" + list_img[img];
+                document.getElementById("imgId").src = new_src;
+            }
+        }
+
+    </script>
+    
+
+</body>
+</html>

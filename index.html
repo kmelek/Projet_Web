@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">PlayVibe</div>
+        <ul class="nav-links">
+          <li><a href="main.html">Accueil</a></li>
+          <li><a href="http://localhost:3000/galerie">Images</a></li>
+          <li><a href="http://localhost:3000/">Videos</a></li>
+          
+        </ul>
+        <div class="search-bar">
+          <input type="text" placeholder="Recherche...">
+          <button type="submit">Rechercher</button>
+        </div>
+      </nav>
+    <div id="wrapper">
+
+
+        
+        <div id="up">
+            <div id="player">
+                
+                <fieldset id="fieldp">
+                    <video id="videoPlayer" id="vid" class="vidtag" width="100.5%" preload="none" controls autoplay>
+                        <div class="vidtag" id="inner"></div>
+                        
+                    </video>
+                    
+                        <div id="outils">
+                            <button value="Previous" id="previous"><i class="fa fa-step-backward"></i></button>
+                            <button value="Stop" id="resume"><i class="fa fa-play"></i></button>
+                            <button value="Next" id="next"><i class="fa fa-step-forward"></i></button>
+                            <button value="Stop" id="pause"><i class="fa fa-pause"></i></button>
+                            <button value="Stop" id="stop"><i class="fa fa-stop"></i></button>
+                            <button value="Start" id="start" class="start"><i class="fa fa-refresh"></i></button>
+                        </div>
+                    
+                </fieldset>
+            </div>
+            
+        </div>
+
+        <div id="bar">
+
+            <div id="vari">
+                <fieldset>
+                    <div id="wrapper2">
+                        
+                        
+                        <fieldset id="addf">
+                            <div id="add">
+                                <button value="Start" id="addbtn"><i class="fa fa-plus"></i> <span>Add</span></button>
+                                <!-- Pop up de l'ajout -->
+                                <div id="myModal" class="modal">
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span id="close" class="close">&times;</span>
+                                        <center>
+                                            <fieldset>
+                                                <legend>Add a Video</legend>
+                                                <form action="/file" enctype="multipart/form-data" method=post>
+                                                    <table>
+                                                        <tr>
+                                                            <td><label id="label-file">Path :</label></td>
+                                                            <td><input type="file" id="location" name="location"></td>
+                                                        </tr>
+                                                    </table>
+                                                    <br>
+                                                    <input type="submit" value="Upload">
+                                                    <input type="reset" value="Reset">
+                                                </form>
+                                            </fieldset>
+                                        </center>
+                                    </div>
+                                </div>
+                                <!--******************-->
+                                <button value="delete" id="delete"><i class="fa fa-trash"> <span id="col">Del</span></i></button>
+                                <!-- Pop up de la suppression -->
+                                <div id="myModals" class="modals">
+                                    <!-- Modal content -->
+                                    <div class="modal-contents">
+                                        <span id="closes" class="closes">&times;</span>
+                                        <center>
+                                            <fieldset>
+                                                <legend>Delete a Video</legend>
+                                                <form action="/files" enctype="multipart/form-data" method=post>
+                                                    <table>
+                                                        <tr>
+                                                            <td><label id="label-files">Name :</label></td>
+                                                            <td><input type="text" id="name" name="name"></td>
+                                                        </tr>
+                                                    </table>
+                                                    <br>
+                                                    <input type="submit" value="Delete" id="dell">
+                                                    <input type="reset" value="Reset">
+                                                </form>
+                                            </fieldset>
+                                        </center>
+                                    </div>
+                                </div>
+                                <!--******************-->
+                            </div>
+                        </fieldset>
+                        
+                    </div>
+                </fieldset>
+            </div>
+            <div class="cursor-pointer"   id="media">
+                <table class="play">
+                    
+                    <thead>
+                        <tr>
+                            <th>Nom de la vidéo</th>
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="videoBody">
+                       
+                    </tbody>
+                </table>
+            </table>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="Scripts/index.js"></script>
+</body>
+
+</html>

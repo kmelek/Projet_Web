@@ -1,0 +1,114 @@
+
+.box1{
+
+    background: red;
+    width: 100%;
+    height: 300px;
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+
+.search{
+    position:relative;
+    left:40%;
+    top: 50%;
+}
+.search .input{
+    background-color: white;
+    border:0;
+    font-size:18px;
+    padding:15px;
+    height:50px;
+    width:50px;
+    transition:width 0.3s ease;
+}
+
+.btn{
+    background-color:white;
+    border:0;
+    cursor:pointer;
+    font-size:24px;
+    position:absolute;
+    top:0;
+    left:0;
+    height:50px;
+    width:50px;
+    transition:transform 0.3s ease;
+}
+
+.btn:focus, input:focus{
+    outline:none;
+}
+
+.search.active .input{
+  width:200px;
+}
+.search.active .btn{
+    transform:translateX(198px);
+}
+
+
+/* Image input */
+.image-input {
+	text-align: center;
+    position:relative;
+    left:60%;
+    top: 50%;
+    height:50px;
+    width:50px;
+}
+
+.image-input input {
+	display: none;
+}
+
+.image-input label {
+	color: #FFF;
+	background: #000;
+	font-size: 115%;
+	cursor: pointer;
+}
+
+.image-input label i {
+	font-size: 125%;
+	margin-right: .3rem;
+}
+
+.image-input label:hover i {
+	animation: shake .35s;
+}
+
+.image-input img {
+	max-width: 175px;
+	display: none;
+}
+
+.image-input span {
+	display: none;
+	text-align: center;
+	cursor: pointer;
+}
+
+/* Animation keyframes */
+@keyframes shake {
+	0% {
+		transform: rotate(0deg);
+	}
+	25% {
+		transform: rotate(10deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+	75% {
+		transform: rotate(-10deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+
+

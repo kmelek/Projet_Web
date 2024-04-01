@@ -1,0 +1,489 @@
+/* General styles */
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: linear-gradient(to bottom, #CCCCCC, #3E8DA8); /* Dégradé de gris */
+}
+
+
+/* Wrapper styles */
+#wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+/* Main content area */
+#up {
+  flex: 1 1 0;
+  padding: 20px; /* Add some padding */
+}
+
+#bar {
+  flex: 0 0 350px; /* Set a fixed width for the sidebar */
+  background-color: #eff0f1; /* Light gray background */
+  padding: 20px; /* Add some padding */
+  border-left: 4px solid #000000; /* Ajoute une bordure droite */
+  box-shadow: 200px 200px 200px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour la profondeur */
+}
+
+/* Media container */
+#media {
+  overflow: auto;
+  scroll-behavior: smooth;
+  max-height: 100%;
+  margin-top: 20px; /* Add some space from the top */
+}
+
+/* Fieldset styles */
+fieldset {
+  background-color: #fff; /* White background */
+  border: 2px solid #000000; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Add some padding */
+  margin-bottom: 20px; /* Add some space at the bottom */
+}
+
+/* Legend styles */
+legend {
+  color: #555; /* Dark gray text color */
+  font-style: italic;
+  text-align: center;
+}
+
+#addbtn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff; /* Couleur du texte en blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#addbtn i {
+  margin-right: 5px;
+}
+#delete i {
+  margin-right: 5px;
+}
+
+
+#addbtn span {
+  text-transform: uppercase; /* Convertit le texte en majuscules */
+}
+
+#col{
+  color: white;
+  text-transform: uppercase;  
+  font-size: 16px;
+  font-weight: bold;
+}
+#delete {
+  padding: 10px 20px;
+  background-color: rgb(255,0,0);
+  color: #fff; /* Couleur du texte en blanc */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+/* Form label styles */
+label {
+  color: #555; /* Dark gray text color */
+  font-style: italic;
+}
+
+/* Hyperlink styles */
+a {
+  color: #007bff; /* Blue link color */
+  font-style: italic;
+}
+
+/* Paragraph styles */
+p {
+  color: #333; /* Dark text color */
+  font-size: 15px;
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Button styles */
+button, #imagesub {
+  background-color: #f0f0f0; /* Very light shade */
+  color: #333; /* Dark text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 20px; /* Add padding */
+}
+
+/* Button hover/focus styles */
+button:hover, button:focus, #imagesub:hover, #imagesub:focus {
+  background-color: #e0e0e0; /* Lighter shade on hover/focus */
+}
+
+/* Hover/focus styles for links */
+a:hover, a:focus {
+  color: #0056b3; /* Darker blue on hover/focus */
+  cursor: pointer;
+}
+
+/* Styles for headings */
+b {
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* Italics styles */
+i {
+  color: #6c757d; /* Gray color for italics */
+}
+
+/* Input field styles */
+input {
+  background-color: #fff; /* White background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Add padding */
+}
+
+/* Modal styles */
+.modal, .modals {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Style pour le fond semi-transparent de la modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 999; /* Assure que la modal est au-dessus de tout le reste */
+  display: none; /* Cachée par défaut */
+}
+
+/* Style pour le contenu de la modal */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9; /* Couleur de fond */
+  padding: 20px;
+  border-radius: 10px; /* Coins arrondis */
+  width: 50%; /* Largeur de la modal */
+  max-width: 500px; /* Largeur maximale */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Ombre */
+}
+
+/* Style pour le bouton de fermeture */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #666; /* Couleur du texte */
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333; /* Couleur du texte au survol */
+}
+
+/* Style pour le titre de la modal */
+legend {
+  font-size: 24px; /* Taille de la police */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Couleur du texte */
+}
+
+/* Style pour les labels */
+label {
+  font-weight: bold;
+  color: #666; /* Couleur du texte */
+}
+
+/* Style pour les inputs */
+input[type="file"],
+input[type="submit"],
+input[type="reset"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Taille de la police */
+}
+
+input[type="submit"],
+input[type="reset"] {
+  background-color: #007bff; /* Couleur de fond pour les boutons */
+  color: #fff; /* Couleur du texte */
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+input[type="file"] {
+  width: 100%;
+}
+
+/* Style pour le bouton de parcourir */
+input[type="file"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #007bff; /* Bordure */
+  border-radius: 4px; /* Coins arrondis */
+  background-color: #fff; /* Couleur de fond */
+  color: #007bff; /* Couleur du texte */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transition fluide */
+}
+
+/* Changement de style au survol */
+input[type="file"]:hover {
+  background-color: #007bff; /* Couleur de fond au survol */
+  color: #fff; /* Couleur du texte au survol */
+}
+
+/* Changement de style lorsque le bouton est actif ou sélectionné */
+input[type="file"]:focus,
+input[type="file"]:active {
+  outline: none; /* Supprimer le contour par défaut */
+  border-color: #0056b3; /* Couleur de la bordure lorsqu'il est actif */
+}
+
+
+.close, .closes {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus, .closes:hover, .closes:focus {
+  color: #333; /* Dark text color on hover/focus */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+h1 {
+  font-size:3em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em; 
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.play th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.play td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.play {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 100%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.play td, .play th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.play tr:nth-child(odd) {
+  background: linear-gradient(to bottom, #CCCCCC, #3E8DA8);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Background-color of the even rows */
+.play tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.play th {
+	  background-color: #FFF842;
+    text-align: center;
+}
+
+.play td:first-child { color: #FB667A; }
+
+.play tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.play td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.play td:nth-child(4),
+.play th:nth-child(4) { display: none; }
+}
+
+#outils{
+  text-align: center;
+}
+#add{
+  text-align: center;
+
+  
+}
+
+
+nav {
+  background-color: #3E8DA8;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #555;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #45a049;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .search-bar {
+    margin-left: auto;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
+.cursor-pointer{
+  cursor: pointer;
+}
